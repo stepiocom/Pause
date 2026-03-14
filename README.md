@@ -1,4 +1,4 @@
-# 停 Pause — AI Chat Awareness Extension
+# Pause 停 — AI Chat Awareness Extension
 
 > Adds 5 seconds of friction and pattern detection to web-based AI chats.  
 > Helps you notice influence techniques — without replacing your judgment.
