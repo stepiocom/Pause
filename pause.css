@@ -1,0 +1,300 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Pause (停) — Overlay Styles
+   Minimal, calm, non-intrusive. Does not compete with the page.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Root tokens ── */
+:root {
+  --pause-bg: rgba(12, 12, 14, 0.96);
+  --pause-border: rgba(255, 255, 255, 0.08);
+  --pause-text: #e8e8e8;
+  --pause-muted: rgba(232, 232, 232, 0.55);
+  --pause-accent: #c8a96e;       /* warm amber — pause, not alarm */
+  --pause-accent-dim: rgba(200, 169, 110, 0.18);
+  --pause-danger: #e06c75;       /* stop button */
+  --pause-radius: 14px;
+  --pause-shadow: 0 24px 64px rgba(0, 0, 0, 0.7);
+  --pause-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --pause-transition: 220ms ease;
+}
+
+/* ── Overlay container ── */
+.pause-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2147483647; /* max z-index */
+
+  width: min(480px, calc(100vw - 32px));
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+
+  background: var(--pause-bg);
+  border: 1px solid var(--pause-border);
+  border-radius: var(--pause-radius);
+  box-shadow: var(--pause-shadow);
+
+  font-family: var(--pause-font);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--pause-text);
+
+  padding: 24px;
+  box-sizing: border-box;
+
+  /* Animate in */
+  animation: pause-fadein 280ms ease forwards;
+
+  /* Scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.15) transparent;
+}
+
+.pause-overlay::-webkit-scrollbar { width: 4px; }
+.pause-overlay::-webkit-scrollbar-track { background: transparent; }
+.pause-overlay::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+/* Backdrop */
+.pause-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ── Animations ── */
+@keyframes pause-fadein {
+  from { opacity: 0; transform: translate(-50%, calc(-50% + 8px)); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.pause-fadeout {
+  animation: pause-fadeout 280ms ease forwards !important;
+}
+
+@keyframes pause-fadeout {
+  from { opacity: 1; transform: translate(-50%, -50%); }
+  to   { opacity: 0; transform: translate(-50%, calc(-50% + 8px)); }
+}
+
+/* ── Response reveal ── */
+.pause-reveal {
+  animation: pause-reveal 400ms ease forwards;
+}
+
+@keyframes pause-reveal {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Header ── */
+.pause-header {
+  margin-bottom: 20px;
+}
+
+.pause-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--pause-accent);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.pause-subtitle {
+  font-size: 13px;
+  color: var(--pause-muted);
+  margin-bottom: 12px;
+}
+
+.pause-countdown {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--pause-accent);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--pause-accent);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 16px;
+  animation: pause-pulse 1s ease-in-out infinite;
+}
+
+@keyframes pause-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+/* ── Intent check ── */
+.pause-intent {
+  font-size: 13px;
+  color: var(--pause-muted);
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border-left: 2px solid var(--pause-accent);
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.pause-intent-label {
+  color: var(--pause-muted);
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+/* ── Patterns section ── */
+.pause-patterns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.pause-pattern-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--pause-border);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.pause-pattern-label-row {
+  margin-bottom: 8px;
+}
+
+/* ── Chips ── */
+.pause-chip {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 100px;
+  background: var(--pause-accent-dim);
+  color: var(--pause-accent);
+  border: 1px solid rgba(200, 169, 110, 0.3);
+}
+
+/* Context signals get a slightly different tint */
+.pause-chip-late_night,
+.pause-chip-quick_exchange,
+.pause-chip-repetition,
+.pause-chip-growing_responses {
+  background: rgba(97, 175, 239, 0.12);
+  color: #61afef;
+  border-color: rgba(97, 175, 239, 0.25);
+}
+
+/* ── Why text ── */
+.pause-why {
+  font-size: 13.5px;
+  color: var(--pause-text);
+  margin: 0 0 6px 0;
+}
+
+/* ── Reflection question ── */
+.pause-question {
+  font-size: 13px;
+  color: var(--pause-muted);
+  margin: 0;
+  font-style: italic;
+}
+
+/* ── No-pattern message ── */
+.pause-no-pattern {
+  font-size: 13px;
+  color: var(--pause-muted);
+  margin: 0 0 20px 0;
+  text-align: center;
+  padding: 12px 0;
+}
+
+/* ── Actions ── */
+.pause-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pause-btn {
+  font-family: var(--pause-font);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background var(--pause-transition), opacity var(--pause-transition);
+  white-space: nowrap;
+}
+
+.pause-btn:focus-visible {
+  outline: 2px solid var(--pause-accent);
+  outline-offset: 2px;
+}
+
+.pause-btn-continue {
+  background: var(--pause-accent);
+  color: #0c0c0e;
+  border-color: var(--pause-accent);
+  flex-shrink: 0;
+}
+
+.pause-btn-continue:hover {
+  opacity: 0.85;
+}
+
+.pause-btn-stop {
+  background: transparent;
+  color: var(--pause-danger);
+  border-color: rgba(224, 108, 117, 0.4);
+}
+
+.pause-btn-stop:hover {
+  background: rgba(224, 108, 117, 0.1);
+}
+
+.pause-btn-lang {
+  background: transparent;
+  color: var(--pause-muted);
+  border-color: var(--pause-border);
+  margin-left: auto;
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+.pause-btn-lang:hover {
+  color: var(--pause-text);
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* ── Responsive adjustments ── */
+@media (max-width: 480px) {
+  .pause-overlay {
+    padding: 18px;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    width: 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    animation: pause-slidein 280ms ease forwards;
+  }
+
+  @keyframes pause-slidein {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}

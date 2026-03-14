@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pause 停</title>
+  <style>
+    :root {
+      --bg: #0e0e10;
+      --surface: #1a1a1e;
+      --border: rgba(255,255,255,0.08);
+      --text: #e8e8e8;
+      --muted: rgba(232,232,232,0.5);
+      --accent: #c8a96e;
+      --danger: #e06c75;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 13px;
+      width: 280px;
+      min-height: 200px;
+      padding: 20px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.3px;
+    }
+
+    .title-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    /* Toggle switch */
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .toggle-label {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .toggle {
+      position: relative;
+      width: 40px;
+      height: 22px;
+    }
+
+    .toggle input { display: none; }
+
+    .toggle-track {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.12);
+      border-radius: 100px;
+      transition: background 200ms;
+      cursor: pointer;
+    }
+
+    .toggle-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 16px;
+      height: 16px;
+      background: var(--muted);
+      border-radius: 50%;
+      transition: transform 200ms, background 200ms;
+      pointer-events: none;
+    }
+
+    .toggle input:checked ~ .toggle-track { background: var(--accent); }
+    .toggle input:checked ~ .toggle-thumb { transform: translateX(18px); background: #0e0e10; }
+
+    /* Stats */
+    .stats {
+      padding: 12px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .stats-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .stat-value {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .stat-key {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Lang toggle */
+    .lang-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .lang-label { color: var(--muted); }
+
+    .lang-btns {
+      display: flex;
+      gap: 4px;
+    }
+
+    .lang-btn {
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: all 150ms;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: #0e0e10;
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Footer */
+    .footer {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #98c379;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+
+    .status-dot.off { background: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <div class="title">停 Pause</div>
+      <div class="title-sub">AI Chat Awareness</div>
+    </div>
+  </div>
+
+  <div class="toggle-row">
+    <span class="toggle-label">
+      <span class="status-dot" id="statusDot"></span>
+      <span id="statusLabel">Active</span>
+    </span>
+    <label class="toggle">
+      <input type="checkbox" id="enableToggle" checked />
+      <div class="toggle-track"></div>
+      <div class="toggle-thumb"></div>
+    </label>
+  </div>
+
+  <div class="stats">
+    <div class="stats-label" id="statsLabel">This session</div>
+    <div class="stats-grid">
+      <div class="stat">
+        <span class="stat-value" id="msgCount">—</span>
+        <span class="stat-key" id="msgLabel">responses</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="avgLen">—</span>
+        <span class="stat-key" id="lenLabel">avg length</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lang-row">
+    <span class="lang-label" id="langLabel">Language</span>
+    <div class="lang-btns">
+      <button class="lang-btn" id="btnEn">EN</button>
+      <button class="lang-btn" id="btnZh">中</button>
+    </div>
+  </div>
+
+  <div class="footer" id="footer">
+    No server. No data sent. Fully local.<br />
+    <a href="https://github.com/your-username/pause-extension" target="_blank">GitHub</a>
+    &nbsp;·&nbsp; MIT License
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

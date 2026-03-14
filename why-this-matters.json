@@ -1,0 +1,135 @@
+{
+  "_comment": "Pause (停) — Why This Matters explanations. Bilingual: English and Traditional Chinese.",
+  "explanations": {
+    "urgency": {
+      "en": {
+        "short": "Time pressure detected",
+        "why": "Time pressure bypasses deliberation. Noticing it restores your pause.",
+        "question": "Is there actually a deadline here, or is this pressure coming from the response itself?"
+      },
+      "zh": {
+        "short": "偵測到時間壓力",
+        "why": "時間壓力會繞過深思熟慮。察覺它，就能恢復你的停頓空間。",
+        "question": "這裡真的有截止期限嗎？還是這種壓迫感來自回應本身？"
+      }
+    },
+    "social_proof": {
+      "en": {
+        "short": "Popularity used as evidence",
+        "why": "Popularity is not evidence. Your situation is specific.",
+        "question": "Does what 'most people' do actually apply to your context?"
+      },
+      "zh": {
+        "short": "以普遍性作為論據",
+        "why": "普遍性不等於證據。你的情況是獨特的。",
+        "question": "「大多數人」的做法真的適用於你的情境嗎？"
+      }
+    },
+    "authority": {
+      "en": {
+        "short": "High-confidence claim",
+        "why": "Confidence is not accuracy. Verify independently.",
+        "question": "How would you check this claim? What would change your mind?"
+      },
+      "zh": {
+        "short": "高確信度宣稱",
+        "why": "自信不等於準確。請獨立驗證。",
+        "question": "你會如何查證這個說法？什麼情況會改變你的看法？"
+      }
+    },
+    "flattery": {
+      "en": {
+        "short": "Opening praise noted",
+        "why": "Praise before an answer can prime you to accept what follows.",
+        "question": "Would you read this response differently if it started without the compliment?"
+      },
+      "zh": {
+        "short": "注意到開場讚美",
+        "why": "回答前的讚美可能讓你更容易接受後續內容。",
+        "question": "如果沒有這句讚美，你會如何解讀這個回應？"
+      }
+    },
+    "false_binary": {
+      "en": {
+        "short": "Two-option framing",
+        "why": "Most real situations have more than two paths. Binary framing narrows your thinking.",
+        "question": "What's a third option not mentioned here?"
+      },
+      "zh": {
+        "short": "二元選項框架",
+        "why": "大多數真實情況不止兩條路。二元框架會窄化你的思考。",
+        "question": "這裡還有什麼第三個選項沒有被提及？"
+      }
+    },
+    "loaded_framing": {
+      "en": {
+        "short": "Embedded assumption",
+        "why": "The response assumes something you haven't confirmed. Unexamined assumptions shape what you accept.",
+        "question": "Do you actually agree with the assumption built into this answer?"
+      },
+      "zh": {
+        "short": "嵌入預設假設",
+        "why": "回應假設了你未確認的事情。未經審視的假設會影響你的接受程度。",
+        "question": "你真的同意這個回答中內建的假設嗎？"
+      }
+    },
+    "late_night": {
+      "en": {
+        "short": "Late-night session",
+        "why": "Fatigue increases compliance. Your state shapes what you accept.",
+        "question": "Would you read this the same way tomorrow morning?"
+      },
+      "zh": {
+        "short": "深夜使用中",
+        "why": "疲勞會增加順從傾向。你當下的狀態影響你接受的內容。",
+        "question": "明天早上你還會這樣看待這個回應嗎？"
+      }
+    },
+    "quick_exchange": {
+      "en": {
+        "short": "Rapid exchange",
+        "why": "Speed reduces reflection. Momentum can carry you further than you intended.",
+        "question": "Is the pace of this conversation yours, or are you just following along?"
+      },
+      "zh": {
+        "short": "快速交流中",
+        "why": "速度會減少反思。對話的動能可能帶著你走得比預期更遠。",
+        "question": "這場對話的節奏是你設定的，還是你只是在跟隨？"
+      }
+    },
+    "repetition": {
+      "en": {
+        "short": "Similar question asked before",
+        "why": "Asking again suggests doubt. What changed since last time?",
+        "question": "What answer were you hoping for? Did you get it yet?"
+      },
+      "zh": {
+        "short": "曾問過相似問題",
+        "why": "重複詢問意味著有所懷疑。上次之後有什麼改變了嗎？",
+        "question": "你希望得到什麼答案？你已經得到了嗎？"
+      }
+    },
+    "growing_responses": {
+      "en": {
+        "short": "Responses getting longer",
+        "why": "Length can obscure structure. More words does not mean more clarity.",
+        "question": "What is the core claim in this response? Can you state it in one sentence?"
+      },
+      "zh": {
+        "short": "回應越來越長",
+        "why": "長度可能掩蓋結構。更多文字不等於更清晰。",
+        "question": "這個回應的核心主張是什麼？你能用一句話說出來嗎？"
+      }
+    }
+  },
+  "intent_check": {
+    "en": {
+      "prompt": "Before you read this response —",
+      "question": "Did you want options, or confirmation?"
+    },
+    "zh": {
+      "prompt": "在你閱讀這個回應之前——",
+      "question": "你想要選項，還是確認？"
+    }
+  }
+}

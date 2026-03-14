@@ -1,0 +1,180 @@
+{
+  "_comment": "Pause (停) — Pattern definitions. Each pattern has keyword triggers and context rules.",
+  "patterns": [
+    {
+      "id": "urgency",
+      "label_en": "Urgency",
+      "label_zh": "緊迫感",
+      "description_en": "Response creates or implies time pressure.",
+      "description_zh": "回應製造或暗示時間壓力。",
+      "triggers": {
+        "keywords": [
+          "immediately", "right now", "urgent", "asap", "as soon as possible",
+          "don't wait", "time is running out", "before it's too late",
+          "quickly", "hurry", "critical", "emergency", "deadline",
+          "limited time", "act now", "you need to decide",
+          "without delay", "must act", "no time to waste"
+        ],
+        "phrases": [
+          "the sooner the better",
+          "you should do this now",
+          "time sensitive",
+          "don't delay",
+          "window of opportunity"
+        ]
+      },
+      "weight": 1.0
+    },
+    {
+      "id": "social_proof",
+      "label_en": "Social proof",
+      "label_zh": "從眾效應",
+      "description_en": "Response uses popularity or consensus as justification.",
+      "description_zh": "回應以普遍性或共識作為理由。",
+      "triggers": {
+        "keywords": [
+          "most people", "everyone", "experts agree", "studies show",
+          "research shows", "widely accepted", "commonly known",
+          "best practice", "standard practice", "consensus",
+          "most experts", "many people", "a lot of people",
+          "typically", "generally speaking", "it is widely",
+          "the majority", "popular opinion", "conventional wisdom"
+        ],
+        "phrases": [
+          "research shows that",
+          "studies suggest that",
+          "experts recommend",
+          "most people find that",
+          "it is generally accepted",
+          "the evidence suggests"
+        ]
+      },
+      "weight": 0.8
+    },
+    {
+      "id": "authority",
+      "label_en": "Authority claim",
+      "label_zh": "權威宣稱",
+      "description_en": "Response invokes authority, expertise, or certainty without verification.",
+      "description_zh": "回應援引權威、專業或確定性而無法驗證。",
+      "triggers": {
+        "keywords": [
+          "definitely", "certainly", "absolutely", "without doubt",
+          "clearly", "obviously", "it is certain", "undeniably",
+          "proven", "established fact", "scientifically proven",
+          "I am confident", "you can trust", "guaranteed",
+          "no question", "unquestionably", "indisputably"
+        ],
+        "phrases": [
+          "this is definitely",
+          "I can say with confidence",
+          "it is absolutely",
+          "there is no doubt",
+          "this is clearly the",
+          "without question"
+        ]
+      },
+      "weight": 0.9
+    },
+    {
+      "id": "flattery",
+      "label_en": "Flattery",
+      "label_zh": "奉承讚美",
+      "description_en": "Response opens with praise that may prime acceptance.",
+      "description_zh": "回應以讚美開場，可能預先建立接受傾向。",
+      "triggers": {
+        "keywords": [
+          "great question", "excellent question", "wonderful question",
+          "fantastic", "brilliant", "insightful", "thoughtful question",
+          "that's a really good", "very smart", "you're absolutely right",
+          "that's an interesting", "I love that question",
+          "what a great", "perfect question"
+        ],
+        "phrases": [
+          "great question!",
+          "excellent question!",
+          "that's a really thoughtful",
+          "what a wonderful",
+          "you raise a great point"
+        ]
+      },
+      "weight": 0.6
+    },
+    {
+      "id": "false_binary",
+      "label_en": "False binary",
+      "label_zh": "非此即彼",
+      "description_en": "Response frames a complex situation as having only two options.",
+      "description_zh": "回應將複雜情況框架為僅有兩個選項。",
+      "triggers": {
+        "keywords": [],
+        "phrases": [
+          "either you", "either... or",
+          "you have two options",
+          "you have two choices",
+          "there are only two",
+          "it's either",
+          "you must choose between",
+          "the only options are",
+          "basically two paths"
+        ]
+      },
+      "weight": 0.85
+    },
+    {
+      "id": "loaded_framing",
+      "label_en": "Loaded framing",
+      "label_zh": "預設立場",
+      "description_en": "Response embeds assumptions that haven't been agreed to.",
+      "description_zh": "回應嵌入未經同意的假設前提。",
+      "triggers": {
+        "keywords": [
+          "obviously you want", "since you want", "as someone who",
+          "given that you", "because you clearly", "naturally you"
+        ],
+        "phrases": [
+          "since you want to",
+          "obviously you",
+          "as someone who wants",
+          "given your goal of",
+          "because you're looking to"
+        ]
+      },
+      "weight": 0.75
+    }
+  ],
+  "context_signals": [
+    {
+      "id": "late_night",
+      "label_en": "Late night",
+      "label_zh": "深夜使用",
+      "hours": [22, 23, 0, 1, 2, 3, 4],
+      "description_en": "Late-night session detected.",
+      "description_zh": "偵測到深夜使用。"
+    },
+    {
+      "id": "quick_exchange",
+      "label_en": "Quick back-and-forth",
+      "label_zh": "快速來回",
+      "threshold_seconds": 30,
+      "description_en": "Rapid message exchange detected.",
+      "description_zh": "偵測到快速訊息交換。"
+    },
+    {
+      "id": "repetition",
+      "label_en": "Repeated question",
+      "label_zh": "重複提問",
+      "threshold_similarity": 0.7,
+      "description_en": "Similar question asked before in this session.",
+      "description_zh": "此對話中曾問過相似問題。"
+    },
+    {
+      "id": "growing_responses",
+      "label_en": "Growing responses",
+      "label_zh": "回應越來越長",
+      "threshold_percent": 40,
+      "description_en": "AI responses have grown significantly longer.",
+      "description_zh": "AI 回應長度明顯增加。"
+    }
+  ]
+}
